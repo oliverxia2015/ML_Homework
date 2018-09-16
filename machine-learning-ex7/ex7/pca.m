@@ -20,7 +20,8 @@ S = zeros(n);
 %       number of examples).
 %
 
-
+covar_mtrix = X'*X/m;
+[U,S,V] = svd(covar_mtrix);
 
 
 

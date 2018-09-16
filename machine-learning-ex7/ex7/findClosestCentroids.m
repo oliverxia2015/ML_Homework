@@ -21,6 +21,27 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
+m = size(X,1);
+for i = 1:m
+    if(K==1)
+        idx(i) = 1;
+    else
+        x= X(i,1:end);  %(1xn vector)
+        diff = x-centroids(1,1:end);
+        temp_dist = diff*diff';
+        min_dist = temp_dist;
+        temp_idx = 1;
+        for j = 2:K
+            diff = x-centroids(j,1:end);
+            dist = diff*diff';
+            if(dist < min_dist)
+                min_dist = dist;
+                temp_idx = j;
+            end
+        end
+        idx(i) = temp_idx;
+    end
+end
 
 
 
